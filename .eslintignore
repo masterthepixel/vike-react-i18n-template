@@ -1,5 +1,6 @@
 # Build artifacts
 dist/**
+node_modules/**
 
 # JS files at the root of the project
 *.js

@@ -1,14 +1,16 @@
-import './css/index.css'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { PageShell } from './PageShell'
-import { getPageTitle } from './getPageTitle'
-import type { OnRenderClientAsync } from 'vike/types'
-import { sleep } from '../demo-utils/utils'
+import "./css/index.css"
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { PageShell } from "./PageShell"
+import { getPageTitle } from "./getPageTitle"
+import type { OnRenderClientAsync } from "vike/types"
+import { sleep } from "../demo-utils/utils"
 
 let root: ReactDOM.Root
 // https://vike.dev/onRenderClient
-export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
+export const onRenderClient: OnRenderClientAsync = async (
+  pageContext
+): ReturnType<OnRenderClientAsync> => {
   const { Page, locale } = pageContext
   const page = (
     <PageShell pageContext={pageContext}>
@@ -26,7 +28,7 @@ export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnTy
   await sleep(500)
   // ---
 
-  const container = document.getElementById('root')!
+  const container = document.getElementById("root")!
   if (pageContext.isHydration) {
     console.log("is Hydration")
     root = ReactDOM.hydrateRoot(container, page)

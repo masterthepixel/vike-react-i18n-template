@@ -11,7 +11,7 @@ export async function data() {
     // minimize what is sent over the network.
     movies: filterMoviesData(movies),
     // The page's <title>
-    title: `${movies.length} Star Wars Movies`
+    title: `${movies.length} Star Wars Movies`,
   }
 }
 

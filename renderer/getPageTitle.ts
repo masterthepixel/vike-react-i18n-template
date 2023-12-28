@@ -1,4 +1,4 @@
-import type { PageContext } from 'vike/types'
+import type { PageContext } from "vike/types"
 
 export function getPageTitle(pageContext: PageContext): string {
   const title =
@@ -7,6 +7,6 @@ export function getPageTitle(pageContext: PageContext): string {
     // Title defined statically by /pages/some-page/+title.js (or by `export default { title }` in /pages/some-page/+config.js)
     // The config 'pageContext.config.title' is a custom config we defined at ./+config.ts
     pageContext.config.title ||
-    'Demo'
+    "Demo"
   return title
 }

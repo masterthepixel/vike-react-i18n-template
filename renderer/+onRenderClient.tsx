@@ -5,16 +5,17 @@ import { PageShell } from "./PageShell"
 import { getPageTitle } from "./getPageTitle"
 import type { OnRenderClientAsync } from "vike/types"
 import { sleep } from "../demo-utils/utils"
+import { localeDefault } from "$/locales"
 
 let root: ReactDOM.Root
 // https://vike.dev/onRenderClient
 export const onRenderClient: OnRenderClientAsync = async (
   pageContext
 ): ReturnType<OnRenderClientAsync> => {
-  const { Page, locale } = pageContext
+  const { Page, pageProps = {}, locale = localeDefault } = pageContext
   const page = (
     <PageShell pageContext={pageContext}>
-      <Page />
+      <Page {...pageProps} />
     </PageShell>
   )
 
@@ -29,15 +30,22 @@ export const onRenderClient: OnRenderClientAsync = async (
   // ---
 
   const container = document.getElementById("root")!
-  if (pageContext.isHydration) {
-    console.log("is Hydration")
-    root = ReactDOM.hydrateRoot(container, page)
-  } else {
-    console.log("is Rendering")
+  const timestamp = performance.now()
+  window.hydration_started_at = timestamp
+  if (!pageContext.isHydration) {
+    // CSR SPA
     if (!root) {
       root = ReactDOM.createRoot(container)
     }
     root.render(page)
+    console.log(
+      `Browser finished rendering in ${(performance.now() - timestamp).toFixed(
+        2
+      )}ms`
+    )
+  } else {
+    // SSR
+    root = ReactDOM.hydrateRoot(container, page)
   }
   // ---
   // FOR CLIENT-SIDE ROUTING

@@ -32,6 +32,7 @@ export function PageShell({
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
+      id="wrapper"
       style={{
         display: "flex",
         maxWidth: 900,
@@ -65,7 +66,7 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container">
       <div
-        id="root"
+        id="page-view"
         style={{
           padding: 20,
           paddingBottom: 50,

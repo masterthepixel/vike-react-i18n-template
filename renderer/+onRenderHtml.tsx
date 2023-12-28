@@ -13,14 +13,19 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext
 ): ReturnType<OnRenderHtmlAsync> => {
   const { Page, locale = localeDefault, urlPathname, urlLogical } = pageContext
-
-  const stream = await renderToStream(
-    <PageShell pageContext={pageContext}>
-      <Page />
-    </PageShell>,
-    // We don't need react-streaming for this app. (We use it merely to showcase that Vike can handle react-streaming with a pre-rendered app. Note that using react-streaming with pre-rendering can make sense if we want to be able to use React's latest <Suspsense> techniques.)
-    { disable: true }
-  )
+  let pageHtml
+  if (!pageContext.Page) {
+    // SPA
+    pageHtml = ""
+  } else {
+    pageHtml = await renderToStream(
+      <PageShell pageContext={pageContext}>
+        <Page />
+      </PageShell>,
+      // We don't need react-streaming for this app. (We use it merely to showcase that Vike can handle react-streaming with a pre-rendered app. Note that using react-streaming with pre-rendering can make sense if we want to be able to use React's latest <Suspsense> techniques.)
+      { disable: true }
+    )
+  }
 
   const title = getPageTitle(pageContext)
   const description = getPageDescription(pageContext)
@@ -44,8 +49,8 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
           urlLogical === "/" ? "" : urlLogical
         }`}" />
       </head>
-      <body>
-        <div id="root">${stream}</div>
+      <body class="page-is-hydrating">
+        <div id="root">${pageHtml}</div>
       </body>
     </html>`
 

@@ -5,6 +5,8 @@ import { useData } from "$/renderer/useData"
 import type { Data } from "./+data"
 import { Link } from "$/renderer/Link"
 import { LocaleText } from "$/locales/LocaleText"
+import { navigate } from "vike/client/router"
+import { unknown_names } from "../names"
 
 function Page() {
   const { name, isStranger } = useData<Data>()
@@ -41,6 +43,16 @@ function Page() {
           <Link href="/hello/forbidden">/hello/forbidden</Link>
         </li>
       </ul>
+      <p>
+        <button
+          onClick={() => {
+            const randomIndex = Math.floor(Math.random() * unknown_names.length)
+            navigate(`/hello/${unknown_names[randomIndex]}`)
+          }}
+        >
+          Random
+        </button>
+      </p>
     </>
   )
 }

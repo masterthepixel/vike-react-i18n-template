@@ -3,12 +3,15 @@ import { useData } from "$/renderer/useData"
 import type { Data } from "./+data"
 import { navigate } from "vike/client/router"
 import { Link } from "$/components/Link"
+import { LocaleText } from "$/locales/LocaleText"
 
 export default function Page() {
   const { movies } = useData<Data>()
   return (
     <>
-      <h1>Star Wars Movies</h1>
+    <h1>
+      <LocaleText>Star Wars Movies</LocaleText>
+    </h1>
       <ol>
         {movies.map(({ id, title, release_date }) => (
           <li key={id}>
@@ -27,12 +30,10 @@ export default function Page() {
         </button>
       </p>
       <p>
-        Source:{" "}
+        <LocaleText>Source</LocaleText>:{" "}
         <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.
       </p>
-      <p>
-        Data can be fetched by using the <code>data()</code> hook.
-      </p>
+      {/* Data can be fetched by using the <code>data()</code> hook. */}
     </>
   )
 }

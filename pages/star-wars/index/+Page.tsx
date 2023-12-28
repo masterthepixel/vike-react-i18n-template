@@ -2,6 +2,7 @@ import React from "react"
 import { useData } from "$/renderer/useData"
 import type { Data } from "./+data"
 import { navigate } from "vike/client/router"
+import { Link } from "$/components/Link"
 
 export default function Page() {
   const { movies } = useData<Data>()
@@ -11,7 +12,7 @@ export default function Page() {
       <ol>
         {movies.map(({ id, title, release_date }) => (
           <li key={id}>
-            <a href={`/star-wars/${id}`}>{title}</a> ({release_date})
+            <Link href={`/star-wars/${id}`}>{title}</Link> ({release_date})
           </li>
         ))}
       </ol>

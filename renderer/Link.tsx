@@ -1,16 +1,21 @@
 export { Link }
 
-import { extractLocale, localeDefault } from "../locales"
+import { localeDefault } from "../locales"
 import { usePageContext } from "./usePageContext"
 import React from "react"
 
 type LinkProps = JSX.IntrinsicElements["a"] & { locale?: LanguageTag }
 
-function Link({ href, locale, children, className, ...props }: LinkProps) {
-  const { locale: currentLocale, urlPathname } = usePageContext()
-  const { urlWithoutLocale } = extractLocale(urlPathname)
+function Link({
+  href = "/",
+  locale,
+  children,
+  className,
+  ...props
+}: LinkProps) {
+  const { locale: currentLocale, urlLogical } = usePageContext()
   const isActive =
-    href === "/" ? urlWithoutLocale === href : urlWithoutLocale.startsWith(href)
+    href === "/" ? urlLogical === href : urlLogical.startsWith(href)
   locale = locale || currentLocale
   if (locale !== localeDefault) {
     href = "/" + locale + href

@@ -1,7 +1,7 @@
 import React from "react"
 import logoUrl from "./logo.svg"
 import { PageContextProvider } from "./usePageContext"
-import { Link } from "./Link"
+import { Link } from "$/components/Link"
 import type { PageContext } from "vike/types"
 
 export function PageShell({
@@ -18,6 +18,7 @@ export function PageShell({
           <Sidebar>
             <Logo />
             <Link href="/">Welcome</Link>
+            <Link href="/about">About</Link>
             <Link href="/star-wars">Data Fetching</Link>
             <Link href="/hello">Routing</Link>
           </Sidebar>
@@ -64,7 +65,7 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container">
       <div
-        id="page-content"
+        id="root"
         style={{
           padding: 20,
           paddingBottom: 50,

@@ -17,10 +17,10 @@
 body.page-is-transitioning #page-container::before {
   opacity: 1;
 }
-#page-content,
+#root,
 #page-container::before {
   transition: opacity 0.5s ease-in-out;
 }
-body.page-is-transitioning #page-content {
+body.page-is-transitioning #root {
   opacity: 0.17;
 }

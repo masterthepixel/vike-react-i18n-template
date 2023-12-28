@@ -1,8 +1,6 @@
-export { getPageDescription }
-
 import type { PageContext } from "vike/types"
 
-function getPageDescription(pageContext: PageContext): string {
+export function getPageDescription(pageContext: PageContext): string {
   const description =
     // Title defined dynamically by data()
     pageContext.data?.description ||

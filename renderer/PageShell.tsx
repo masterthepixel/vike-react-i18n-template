@@ -1,12 +1,16 @@
-import React from 'react'
-import logoUrl from './logo.svg'
-import { PageContextProvider } from './usePageContext'
-import { Link } from './Link'
-import type { PageContext } from 'vike/types'
+import React from "react"
+import logoUrl from "./logo.svg"
+import { PageContextProvider } from "./usePageContext"
+import { Link } from "./Link"
+import type { PageContext } from "vike/types"
 
-export { PageShell }
-
-function PageShell({ pageContext, children }: { pageContext: PageContext; children: React.ReactNode }) {
+export function PageShell({
+  pageContext,
+  children,
+}: {
+  pageContext: PageContext
+  children: React.ReactNode
+}) {
   return (
     <React.StrictMode>
       <PageContextProvider pageContext={pageContext}>
@@ -28,9 +32,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        display: 'flex',
+        display: "flex",
         maxWidth: 900,
-        margin: 'auto'
+        margin: "auto",
       }}
     >
       {children}
@@ -45,10 +49,10 @@ function Sidebar({ children }: { children: React.ReactNode }) {
       style={{
         padding: 20,
         flexShrink: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        lineHeight: '1.8em',
-        borderRight: '2px solid #eee'
+        display: "flex",
+        flexDirection: "column",
+        lineHeight: "1.8em",
+        borderRight: "2px solid #eee",
       }}
     >
       {children}
@@ -64,7 +68,7 @@ function Content({ children }: { children: React.ReactNode }) {
         style={{
           padding: 20,
           paddingBottom: 50,
-          minHeight: '100vh'
+          minHeight: "100vh",
         }}
       >
         {children}
@@ -78,11 +82,11 @@ function Logo() {
     <div
       style={{
         marginTop: 20,
-        marginBottom: 10
+        marginBottom: 10,
       }}
     >
       <a href="/">
-        <img src={logoUrl} height={64} width={64} />
+        <img src={logoUrl} height={64} width={64} alt="" />
       </a>
     </div>
   )

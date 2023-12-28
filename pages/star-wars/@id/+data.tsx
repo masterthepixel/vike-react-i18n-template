@@ -1,14 +1,12 @@
-// https://vike.dev/data
-export { data }
+import fetch from "cross-fetch"
+import type { PageContextClient, PageContextServer } from "vike/types"
+import { render } from "vike/abort"
+import { filterMovieData } from "$/demo-utils/utils"
+
 export type Data = Awaited<ReturnType<typeof data>>
 
-import fetch from 'cross-fetch'
-import { filterMovieData } from '../filterMovieData'
-import type { PageContextClient, PageContextServer } from 'vike/types'
-import type { MovieDetails } from '../types'
-import { render } from 'vike/abort'
-
-async function data(pageContext: PageContextServer | PageContextClient) {
+// https://vike.dev/data
+export async function data(pageContext: PageContextServer | PageContextClient) {
   const dataUrl = `https://star-wars.brillout.com/api/films/${pageContext.routeParams?.id}.json`
   let movie: MovieDetails
   try {
@@ -17,7 +15,10 @@ async function data(pageContext: PageContextServer | PageContextClient) {
   } catch (err) {
     console.error(err)
     //*/
-    throw render(503, `Couldn't fetch data, because failed HTTP GET request to ${dataUrl}`)
+    throw render(
+      503,
+      `Couldn't fetch data, because failed HTTP GET request to ${dataUrl}`
+    )
     /*/
     throw render(
       503,
@@ -37,6 +38,6 @@ async function data(pageContext: PageContextServer | PageContextClient) {
   return {
     movie,
     // The page's <title>
-    title
+    title,
   }
 }

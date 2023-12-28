@@ -1,10 +1,9 @@
-// https://vike.dev/data
-export { data }
+import { getStarWarsMovies, filterMoviesData } from "$/demo-utils/utils"
+
 export type Data = Awaited<ReturnType<typeof data>>
 
-import { filterMoviesData, getStarWarsMovies, getTitle } from './getStarWarsMovies'
-
-async function data() {
+// https://vike.dev/data
+export async function data() {
   await sleep(700) // Simulate slow network
   const movies = await getStarWarsMovies()
   return {
@@ -12,7 +11,7 @@ async function data() {
     // minimize what is sent over the network.
     movies: filterMoviesData(movies),
     // The page's <title>
-    title: getTitle(movies)
+    title: `${movies.length} Star Wars Movies`
   }
 }
 

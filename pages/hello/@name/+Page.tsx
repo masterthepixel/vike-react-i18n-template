@@ -1,5 +1,3 @@
-export default Page
-
 import React from "react"
 import { useData } from "$/renderer/useData"
 import type { Data } from "./+data"
@@ -8,7 +6,7 @@ import { LocaleText } from "$/locales/LocaleText"
 import { navigate } from "vike/client/router"
 import { unknown_names } from "../names"
 
-function Page() {
+export default function Page() {
   const { name, isStranger } = useData<Data>()
   return (
     <>

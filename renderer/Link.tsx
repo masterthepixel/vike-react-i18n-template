@@ -1,12 +1,10 @@
-export { Link }
-
 import { extractLocale, localeDefault } from "../locales"
 import { usePageContext } from "./usePageContext"
 import React from "react"
 
 type LinkProps = JSX.IntrinsicElements["a"] & { locale?: LanguageTag }
 
-function Link({
+export function Link({
   href = "/",
   locale,
   children,

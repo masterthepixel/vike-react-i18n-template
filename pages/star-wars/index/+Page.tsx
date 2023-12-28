@@ -1,11 +1,9 @@
-export default Page
-
 import React from "react"
-import { useData } from "../../../renderer/useData"
+import { useData } from "$/renderer/useData"
 import type { Data } from "./+data"
 import { navigate } from "vike/client/router"
 
-function Page() {
+export default function Page() {
   const { movies } = useData<Data>()
   return (
     <>

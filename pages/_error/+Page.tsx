@@ -1,9 +1,7 @@
-export default Page
-
 import React from 'react'
 import { usePageContext } from '../../renderer/usePageContext'
 
-function Page() {
+export default function Page() {
   const ctx = usePageContext()
   let { is404, abortReason } = ctx
   if (!abortReason) {

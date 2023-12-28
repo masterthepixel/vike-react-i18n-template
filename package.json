@@ -1,23 +1,35 @@
 {
+  "name": "vike-react-i18n-template",
+  "version": "0.0.1",
+  "description": "",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite build && vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "clean": "node scripts/clean.exec.cjs"
   },
+  "type": "module",
   "dependencies": {
-    "@types/node": "^20.10.5",
-    "@types/node-fetch": "^2.6.9",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@vitejs/plugin-react-swc": "^3.5.0",
     "cross-fetch": "^4.0.0",
-    "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-streaming": "^0.3.18",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10",
-    "vike": "^0.4.152"
+    "react-streaming": "^0.3.18"
   },
-  "type": "module"
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vike": "^0.4.152",
+    "vite": "^5.0.10"
+  }
 }

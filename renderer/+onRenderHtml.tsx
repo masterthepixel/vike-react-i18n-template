@@ -1,6 +1,3 @@
-// https://vike.dev/onRenderHtml
-export { onRenderHtml }
-
 import { renderToStream } from "react-streaming/server"
 import React from "react"
 import { dangerouslySkipEscape, escapeInject } from "vike/server"
@@ -11,7 +8,8 @@ import logoUrl from "./logo.svg"
 import type { OnRenderHtmlAsync } from "vike/types"
 import { renderLocales, localeDefault } from "../locales/locales"
 
-const onRenderHtml: OnRenderHtmlAsync = async (
+// https://vike.dev/onRenderHtml
+export const onRenderHtml: OnRenderHtmlAsync = async (
   pageContext
 ): ReturnType<OnRenderHtmlAsync> => {
   const { Page, locale = localeDefault, urlPathname, urlLogical } = pageContext

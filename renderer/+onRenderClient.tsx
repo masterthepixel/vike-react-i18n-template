@@ -1,6 +1,3 @@
-// https://vike.dev/onRenderClient
-export { onRenderClient }
-
 import './css/index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -10,7 +7,8 @@ import type { OnRenderClientAsync } from 'vike/types'
 import { sleep } from '../demo-utils/utils'
 
 let root: ReactDOM.Root
-const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
+// https://vike.dev/onRenderClient
+export const onRenderClient: OnRenderClientAsync = async (pageContext): ReturnType<OnRenderClientAsync> => {
   const { Page, locale } = pageContext
   const page = (
     <PageShell pageContext={pageContext}>

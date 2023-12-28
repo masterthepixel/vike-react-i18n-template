@@ -1,12 +1,10 @@
-export default Page
-
 import React from "react"
 import { Link } from "../../renderer/Link"
 import { LocaleText } from "$/locales/LocaleText"
 import { navigate } from "vike/client/router"
 import { unknown_names } from "./names"
 
-function Page() {
+export default function Page() {
   return (
     <>
       <h1>

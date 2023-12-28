@@ -1,17 +1,31 @@
-import type { Config } from "vike/types"
+import type { Config, ConfigEnv } from "vike/types"
 
 // https://vike.dev/config
 export default {
-  passToClient: [
-    "someAsyncProps",
-    "routeParams",
-    "locale"
-  ],
+  passToClient: ["someAsyncProps", "routeParams", "pageProps", "locale"],
   prerender: true,
   clientRouting: true,
   hydrationCanBeAborted: true,
   // https://vike.dev/meta
   meta: {
+    renderMode: {
+      env: { config: true },
+      effect({ configDefinedAt, configValue = "SSR" }) {
+        let env: ConfigEnv | undefined
+        if (configValue === "HTML") env = { server: true }
+        if (configValue === "SPA") env = { client: true }
+        if (configValue === "SSR") env = { server: true, client: true }
+        if (!env)
+          throw new Error(
+            `${configDefinedAt} should be 'SSR', 'SPA', or 'HTML'`
+          )
+        return {
+          meta: {
+            Page: { env },
+          },
+        }
+      },
+    },
     // Create new config 'title'
     title: {
       env: { server: true, client: true },

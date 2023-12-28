@@ -3,6 +3,7 @@ declare global {
   namespace Vike {
     interface PageContext {
       Page: Page
+      pageProps?: PageProps
       data?: {
         // Needed by getPageTitle() and onBeforePrerenderStart()
         title?: string
@@ -24,7 +25,8 @@ declare global {
   }
 }
 
-type Page = () => React.ReactElement
+type PageProps = Record<string, unknown> | undefined
+type Page = (pageProps: PageProps) => React.ReactElement
 
 // Tell TypeScript that this file isn't an ambient module
 export {}

@@ -14,7 +14,6 @@ function PageShell({ pageContext, children }: { pageContext: PageContext; childr
           <Sidebar>
             <Logo />
             <Link href="/">Welcome</Link>
-            <Link href="/markdown">Markdown</Link>
             <Link href="/star-wars">Data Fetching</Link>
             <Link href="/hello">Routing</Link>
           </Sidebar>

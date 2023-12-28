@@ -3,7 +3,7 @@ export default Page
 import React from "react"
 import { useData } from "../../../renderer/useData"
 import type { Data } from "./+data"
-// import { navigate } from "vike/client/router"
+import { navigate } from "vike/client/router"
 
 function Page() {
   const { movies } = useData<Data>()
@@ -17,16 +17,16 @@ function Page() {
           </li>
         ))}
       </ol>
-      {/* <p>
+      <p>
         <button
           onClick={() => {
-            const randomIndex = Math.floor(Math.random() * 6)
+            const randomIndex = Math.floor(Math.random() * 6) + 1
             navigate(`/star-wars/${randomIndex}`)
           }}
         >
           Random
         </button>
-      </p> */}
+      </p>
       <p>
         Source:{" "}
         <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.

@@ -1,22 +1,29 @@
 export default Page
 
 import React from "react"
-import { Link } from "../../renderer/Link"
+import { useData } from "$/renderer/useData"
+import type { Data } from "./+data"
+import { Link } from "$/renderer/Link"
 import { LocaleText } from "$/locales/LocaleText"
 
 function Page() {
+  const { name, isStranger } = useData<Data>()
   return (
     <>
       <h1>
         <LocaleText>Hello</LocaleText>
       </h1>
       <p>
-        <LocaleText>Hi</LocaleText> <b>Visiter</b>.
+        <LocaleText>Hi</LocaleText> <b>{name}</b>.
       </p>
-      <p>
-        <LocaleText>You are a stranger</LocaleText>,{" "}
-        <LocaleText>nice to meet you</LocaleText>.
-      </p>
+      {isStranger ? (
+        <p>
+          <LocaleText>You are a stranger</LocaleText>,{" "}
+          <LocaleText>nice to meet you</LocaleText>.
+        </p>
+      ) : (
+        <></>
+      )}
       <ul>
         <li>
           <Link href="/hello/rom">/hello/rom</Link>

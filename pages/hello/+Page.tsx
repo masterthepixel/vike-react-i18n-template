@@ -1,22 +1,30 @@
 import React from "react"
-import { Link } from "../../renderer/Link"
+import { Link } from "$/components/Link"
 import { LocaleText } from "$/locales/LocaleText"
 import { navigate } from "vike/client/router"
 import { unknown_names } from "./names"
+import { useData } from "$/renderer/useData"
+import { Data } from "./+data"
 
 export default function Page() {
+  const { name, isStranger } = useData<Data>()
   return (
     <>
       <h1>
         <LocaleText>Hello</LocaleText>
       </h1>
       <p>
-        <LocaleText>Hi</LocaleText> <b>Visiter</b>.
+        <LocaleText>Hi</LocaleText>{" "}
+        <b>{name}</b>.
       </p>
-      <p>
-        <LocaleText>You are a stranger</LocaleText>,{" "}
-        <LocaleText>nice to meet you</LocaleText>.
-      </p>
+      {isStranger ? (
+        <p>
+          <LocaleText>You are a stranger</LocaleText>,{" "}
+          <LocaleText>nice to meet you</LocaleText>.
+        </p>
+      ) : (
+        <></>
+      )}
       <ul>
         <li>
           <Link href="/hello/rom">/hello/rom</Link>

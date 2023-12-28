@@ -4,12 +4,11 @@ import type { Config } from "vike/types"
 export default {
   passToClient: [
     "someAsyncProps",
-    "locale",
-    "urlLogical",
-    "urlPathname" /* , 'urlPathname' */,
+    "routeParams",
+    "locale"
   ],
   prerender: true,
-  clientRouting: false,
+  clientRouting: true,
   hydrationCanBeAborted: true,
   // https://vike.dev/meta
   meta: {

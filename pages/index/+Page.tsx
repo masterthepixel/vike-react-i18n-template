@@ -2,7 +2,7 @@ import React from "react"
 import { Counter } from "$/components/Counter"
 import { LocaleText } from "$/locales/LocaleText"
 import { locales } from "$/locales/locales"
-import { Link } from "$/renderer/Link"
+import { Link } from "$/components/Link"
 
 export default function Page() {
   return (

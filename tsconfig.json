@@ -7,8 +7,21 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "jsx": "react",
+    "noEmit": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "noImplicitAny": false,
-  }
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+		// "noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": false,
+		"paths": {
+			// need to be defined in the vite config too!
+      "$/*": ["./*"]
+		}
+  },
+  "exclude": [
+    "dist"
+  ]
 }

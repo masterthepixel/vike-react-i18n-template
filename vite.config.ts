@@ -1,14 +1,19 @@
 import react from '@vitejs/plugin-react-swc'
-import mdx from '@mdx-js/rollup'
 import vike from 'vike/plugin'
-import { UserConfig } from 'vite'
+import { defineConfig } from 'vite'
+import { fileURLToPath, URL } from "node:url"
 
-export default {
+export default defineConfig({
   plugins: [
     vike({
       prerender: true
     }),
-    mdx(),
     react()
-  ]
-} as UserConfig
+  ],
+  resolve: {
+    alias: {
+      // must also be defined in tsconfig!
+      $: fileURLToPath(new URL(".", import.meta.url)),
+    },
+  },
+})

@@ -2,9 +2,9 @@ import type { Config } from 'vike/types'
 
 // https://vike.dev/config
 export default {
-  passToClient: ['someAsyncProps', 'locale'/* , 'urlPathname' */],
+  passToClient: ['someAsyncProps', 'locale', 'urlPathname'/* , 'urlPathname' */],
   prerender: true,
-  clientRouting: true, // if this is false, add 'urlPathname' to passToClient.
+  clientRouting: false, // if this is false, add 'urlPathname' to passToClient.
   hydrationCanBeAborted: true,
   // https://vike.dev/meta
   meta: {

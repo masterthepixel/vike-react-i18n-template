@@ -39,15 +39,19 @@ export function Link({
       relative_degree++
     }
   }
-
   return (
     <a
       {...props}
       href={href}
-      className={clsx(className, {
-        "is-active": currentUrlLogical === targetUrlLogical,
-        "is-related": relative_degree > highlightThreshold,
-      })}
+      className={clsx(
+        "text-blue-600 hover:text-blue-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded",
+        {
+          "font-semibold text-blue-900 border-b-2 border-blue-600": currentUrlLogical === targetUrlLogical,
+          "font-medium text-blue-700": relative_degree > highlightThreshold && currentUrlLogical !== targetUrlLogical,
+        },
+        className
+      )}
+      target={target}
     >
       {children}
     </a>

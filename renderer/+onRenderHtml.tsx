@@ -29,15 +29,18 @@ export const onRenderHtml: OnRenderHtmlAsync = async (
 
   const title = getPageTitle(pageContext)
   const description = getPageDescription(pageContext)
-
   const documentHtml = escapeInject`<!DOCTYPE html>
-    <html lang="${locale}">
+    <html lang="${locale}" dir="${locale === 'ar' ? 'rtl' : 'ltr'}">
       <head>
       <title>${title}</title>
       <meta charset="UTF-8" />
         <link rel="icon" href="${logoUrl}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${description}" />
+        <!-- Google Fonts for multilingual support -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
         ${dangerouslySkipEscape(
           renderLocales({
             currentLocale: locale,

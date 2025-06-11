@@ -1,4 +1,4 @@
-export const locales: LanguageTag[] = ["en", "de", "fr"]
+export const locales: LanguageTag[] = ["en", "de", "fr", "zh", "es", "ar"]
 export const localeDefault: LanguageTag = locales[0]
 
 export const renderLocales = ({

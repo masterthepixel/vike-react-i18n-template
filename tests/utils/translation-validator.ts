@@ -381,7 +381,7 @@ export const generateCoverageReport = (): {
 export const COMMON_PATTERNS: TranslationPattern[] = [
   {
     key: 'welcome',
-    pattern: /^[A-Z\u4e00-\u9fff\u0600-\u06ff].+$/,
+    pattern: /^[A-Z\u4e00-\u9fff\u0600-\u06ff¡¿].+$/,
     description: 'Should start with capital letter or appropriate character',
   },
   {

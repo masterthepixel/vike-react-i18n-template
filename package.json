@@ -22,6 +22,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "clsx": "^2.0.0",
     "cross-fetch": "^4.0.0",
     "react": "^18.2.0",
